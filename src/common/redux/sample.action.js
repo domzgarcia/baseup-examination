@@ -1,4 +1,4 @@
-import { COMMON_ADD_COUNTER } from "./action.types"
+import { COMMON_ADD_COUNTER } from "./sample.actionType"
 
 export const commonHandleAddCounter = () => {
     return {

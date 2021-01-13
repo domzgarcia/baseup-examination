@@ -7,6 +7,9 @@ module.exports = function override(config, env) {
     config.resolve.alias['Services'] = path.join(__dirname, 'src', 'services');
     config.resolve.alias['Client'] = path.join(__dirname, 'src', 'client');
     config.resolve.alias['DTO'] = path.join(__dirname, 'src', 'dto');
+    config.resolve.alias['Actions'] = path.join(__dirname, 'src', 'actions');
+    config.resolve.alias['Store'] = path.join(__dirname, 'src', 'store');
+    config.resolve.alias['ActionTypes'] = path.join(__dirname, 'src', 'actionTypes');
     config.resolve.alias['Images'] = path.join(__dirname, 'public', 'images');
     return config;
 }

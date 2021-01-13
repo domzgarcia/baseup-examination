@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import ProductService from 'Services/ProductService';
 import {combineProductFromCategories} from './helperFunc';
+import {connect} from 'react-redux';
+import {setProduct} from 'Actions/products.actions';
+import {history} from 'Store';
 
 class Products extends Component {
     constructor(props){
@@ -20,7 +23,8 @@ class Products extends Component {
     }
 
     handleProductDetails(product) {
-        alert(JSON.stringify(product, null, 4));
+        this.props.setProduct(product);
+        history.push(`/products/${product.id}`);
     }
 
     renderProducts(){
@@ -69,4 +73,12 @@ class Products extends Component {
     }
 }
 
-export default Products;
+
+const mapDispatchToProps = {
+    setProduct,
+};
+
+export default connect(
+    null,
+    mapDispatchToProps,
+)(Products);

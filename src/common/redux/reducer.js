@@ -1,4 +1,4 @@
-import { COMMON_ADD_COUNTER } from "../actions/action.types";
+import { COMMON_ADD_COUNTER } from "./sample.actionType";
 
 const common = (state={}, {type, payload}) => {
     switch(type){

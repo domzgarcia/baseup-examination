@@ -7,6 +7,8 @@ import App from 'Layouts/app.main';
 import './scss/index.scss';
 
 const Boot = () => {
+  // for debugging...
+  window.Store = store;
   return(
     <Provider store={store}>
       <ConnectedRouter history={history}>
