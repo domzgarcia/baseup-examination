@@ -16,4 +16,11 @@ export default class ProductService {
         .then(res => res)
         .catch(e => { throw e }) 
     }
+
+    static getCategoriesOrderBy(orderBy) {
+        return Client.setUrl(`${this.endpoint}?sortBy=createdAt&order=${orderBy}`)
+        .get()
+        .then(res => res)
+        .catch(e => { throw e }) 
+    }
 }

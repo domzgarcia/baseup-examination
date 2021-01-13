@@ -4,8 +4,10 @@ Todos
 - [x] Product Listing
 - [x] Sort by Desc
 - [x] Add name, image, category
-- [x] Product filter
-- [x] Product Sorter
+- [x] Product filter by search
+- [x] Added debounce functionality but need enhancement
+- [x] Product Sort by category
+- [x] Product Sort by orderBy
 - [x] Add Redux implementation to Products
 - [ ] Product inner page, shows product details
 - [ ] Product search

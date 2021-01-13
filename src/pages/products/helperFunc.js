@@ -1,4 +1,4 @@
-const extractCategoriesAndProducts = (apiCategories) =>{
+const extractCategoriesAndProducts = (apiCategories, defaultOrder=false) =>{
     // concat products per categories
     let consolidateCategories = ["All"];
     const resolveCategoryName = (products, categoryName) => {
@@ -16,8 +16,7 @@ const extractCategoriesAndProducts = (apiCategories) =>{
     apiCategories.forEach(category => {
         products = [...products, ...resolveCategoryName(category.products, category.name)];
     })
-
-    // // desc order
+    // desc order
     const descOrder = (a, b) => {
         const resolvedDateA = Date.parse(a.createdAt);
         const resolvedDateB = Date.parse(b.createdAt);
@@ -26,8 +25,10 @@ const extractCategoriesAndProducts = (apiCategories) =>{
         return 0;
     }
 
+    if(defaultOrder) products = products.sort(descOrder);
+
     return { 
-        products: products.sort(descOrder), 
+        products, 
         categories: consolidateCategories
     };
 }

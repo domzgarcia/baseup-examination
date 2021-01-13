@@ -80,6 +80,20 @@
         max-width: 320px;
         width: 100%;
     }
+
+    .product-orderby {
+        display: inline-block;
+        padding: 5px;
+        vertical-align: top;
+        .btn {
+            cursor: pointer;
+            text-align: center;
+            font-size: 10px;
+            line-height: 10px;
+            height: 39px;
+            width: 50px;
+        }
+    }
 }
 
 

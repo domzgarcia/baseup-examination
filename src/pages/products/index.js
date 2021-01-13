@@ -14,6 +14,9 @@ class Products extends Component {
             productsCache: [],
             categoryFilter: [],
             categoryFilterActive: "All",
+            
+            currOrderBy: "desc",
+            orderByIsFetching: false,
         }
         this._local = {
             searchWord: "",
@@ -24,12 +27,13 @@ class Products extends Component {
         this.handleProductCategoryFilter = this.handleProductCategoryFilter.bind(this);
         this.handleProductCategorySearch = this.handleProductCategorySearch.bind(this);
         this.handleRequestLimitByDebounce = this.handleRequestLimitByDebounce.bind(this);
+        this.handleProductsOrderBy = this.handleProductsOrderBy.bind(this);
     }
 
     async componentDidMount(){
         const apiCategories = await ProductService.getCategories();
         console.log('apiCategories', apiCategories);
-        const {products, categories} = extractCategoriesAndProducts(apiCategories);
+        const {products, categories} = extractCategoriesAndProducts(apiCategories, true);
         console.log('products', products);
         this.setState({ 
             products, 
@@ -46,6 +50,22 @@ class Products extends Component {
             categoryFilter: categories,
         });
         console.log('debounce');
+    }
+
+    handleProductsOrderBy(){
+        const orderBy = this.state.currOrderBy === "desc" ? "asc" : "desc";   
+        ( async () => {
+            const result = await ProductService.getCategoriesOrderBy(orderBy);
+            const {products, categories} = extractCategoriesAndProducts(result);
+
+            console.log('AAA', result);
+
+            this.setState({ 
+                products, 
+                categoryFilter: categories,
+                currOrderBy: orderBy
+            }); 
+        })();    
     }
 
     handleProductDetails(product) {
@@ -137,6 +157,14 @@ class Products extends Component {
         </div>
     }
 
+    // NOTE: When too many dom and logic transfer this to separate component
+    renderOrderByCtrl(){
+        const value = this.state.currOrderBy === "desc" ? "DESC" : "ASC";
+        return <div className="product-orderby">
+            <button className="btn" onClick={this.handleProductsOrderBy} >{value}</button>
+        </div>
+    }
+
     render(){
         return (
             <div className="spa-content">
@@ -145,6 +173,7 @@ class Products extends Component {
                 <div className="product-filters">
                     {this.renderSearchFilter()}
                     {this.renderCategoryFilter()}
+                    {this.renderOrderByCtrl()}
                 </div>
                 
                 <div className="products">

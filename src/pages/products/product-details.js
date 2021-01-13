@@ -13,7 +13,8 @@ class ProductDetails extends Component {
         return (
             <div className="spa-content">
                 <div className="product-details">
-                    <h1>Hello World</h1>
+                    <h1>Product Details</h1>
+                    
                 </div>
             </div>
         )
