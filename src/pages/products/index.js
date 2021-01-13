@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ProductService from 'Services/ProductService';
 import {extractCategoriesAndProducts} from './helperFunc';
+import {debounce} from 'Utilities/helpersFunc';
 import {connect} from 'react-redux';
 import {setProduct} from 'Actions/products.actions';
 import {history} from 'Store';
@@ -14,21 +15,37 @@ class Products extends Component {
             categoryFilter: [],
             categoryFilterActive: "All",
         }
+        this._local = {
+            searchWord: "",
+            executeDebounce: false,
+        }
         // lexical scope for 'this'
         this.handleProductDetails = this.handleProductDetails.bind(this);
         this.handleProductCategoryFilter = this.handleProductCategoryFilter.bind(this);
+        this.handleProductCategorySearch = this.handleProductCategorySearch.bind(this);
+        this.handleRequestLimitByDebounce = this.handleRequestLimitByDebounce.bind(this);
     }
 
     async componentDidMount(){
         const apiCategories = await ProductService.getCategories();
-        // console.log('apiCategories', apiCategories);
+        console.log('apiCategories', apiCategories);
         const {products, categories} = extractCategoriesAndProducts(apiCategories);
-        // console.log('products', products);
+        console.log('products', products);
         this.setState({ 
             products, 
             productsCache: products,
             categoryFilter: categories
         });
+    }
+
+    async handleRequestLimitByDebounce(){
+        const result = await ProductService.searchByCategory( this._local.searchWord );
+        const {products, categories} = extractCategoriesAndProducts(result);
+        this.setState({ 
+            products, 
+            categoryFilter: categories,
+        });
+        console.log('debounce');
     }
 
     handleProductDetails(product) {
@@ -49,6 +66,16 @@ class Products extends Component {
                 this.setState({ categoryFilterActive: 'All' });
             }
         });
+    }
+
+    handleProductCategorySearch(keyword){
+        if(keyword.length ===0) {
+            this.setState({ products: this.state.productsCache });
+            this._local.executeDebounce = true;
+        } else {
+            this._local.searchWord = keyword;
+            this._local.executeDebounce = false;
+        }
     }
     
     // NOTE: When too many dom and logic transfer this to separate component
@@ -89,8 +116,7 @@ class Products extends Component {
                 onChange={(evt) => {
                     const value = evt.currentTarget.value;
                     this.handleProductCategoryFilter(value);
-                }}
-            >
+                }}>
                 {this.state.categoryFilter.map((category, idx, arr) => (
                     <option key={idx} value={category}>{category}</option>
                 ))}
@@ -101,7 +127,13 @@ class Products extends Component {
     // NOTE: When too many dom and logic transfer this to separate component
     renderSearchFilter() {
         return <div className="product-search-filter">
-            <input placeholder="Search a key here"/>
+            <input placeholder="Search by category"
+                onKeyPress={debounce((evt) => this.handleRequestLimitByDebounce(), 500)}
+                onChange={(evt) => {
+                    const value = evt.currentTarget.value;
+                    this.handleProductCategorySearch(value);    
+                }}
+                />
         </div>
     }
 

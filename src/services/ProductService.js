@@ -9,4 +9,11 @@ export default class ProductService {
         .then(res => res)
         .catch(e => { throw e }) 
     }
+
+    static searchByCategory(keyword) {
+        return Client.setUrl(`${this.endpoint}?search=${keyword}`)
+        .get()
+        .then(res => res)
+        .catch(e => { throw e }) 
+    }
 }
