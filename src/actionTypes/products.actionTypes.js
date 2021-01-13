@@ -1,1 +1,2 @@
 export const SET_PRODUCT = "SET_PRODUCT";
+export const IS_PRODUCT_LOADING = "IS_PRODUCT_LOADING";

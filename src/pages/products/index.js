@@ -3,7 +3,7 @@ import ProductService from 'Services/ProductService';
 import {extractCategoriesAndProducts} from './helperFunc';
 import {debounce} from 'Utilities/helpersFunc';
 import {connect} from 'react-redux';
-import {setProduct} from 'Actions/products.actions';
+import {setProduct, setProductIsLoading} from 'Actions/products.actions';
 import {history} from 'Store';
 
 class Products extends Component {
@@ -31,10 +31,12 @@ class Products extends Component {
     }
 
     async componentDidMount(){
+        this.props.setProductIsLoading();
         const apiCategories = await ProductService.getCategories();
         console.log('apiCategories', apiCategories);
         const {products, categories} = extractCategoriesAndProducts(apiCategories, true);
         console.log('products', products);
+        this.props.setProductIsLoading();
         this.setState({ 
             products, 
             productsCache: products,
@@ -55,16 +57,17 @@ class Products extends Component {
     handleProductsOrderBy(){
         const orderBy = this.state.currOrderBy === "desc" ? "asc" : "desc";   
         ( async () => {
+            this.props.setProductIsLoading();
             const result = await ProductService.getCategoriesOrderBy(orderBy);
             const {products, categories} = extractCategoriesAndProducts(result);
-
-            console.log('AAA', result);
 
             this.setState({ 
                 products, 
                 categoryFilter: categories,
                 currOrderBy: orderBy
             }); 
+
+            this.props.setProductIsLoading();
         })();    
     }
 
@@ -128,10 +131,10 @@ class Products extends Component {
 
     // NOTE: When too many dom and logic transfer this to separate component
     renderCategoryFilter() {
-        const isDisabled = this.state.categoryFilter.length === 0;
+        const {isLoading} = this.props;
         return <div className="product-category-filter">
             <select
-                disabled={isDisabled}
+                disabled={isLoading}
                 value={this.state.categoryFilterActive}
                 onChange={(evt) => {
                     const value = evt.currentTarget.value;
@@ -146,8 +149,10 @@ class Products extends Component {
 
     // NOTE: When too many dom and logic transfer this to separate component
     renderSearchFilter() {
+        const {isLoading} = this.props;
         return <div className="product-search-filter">
             <input placeholder="Search by category"
+                disabled={isLoading}
                 onKeyPress={debounce((evt) => this.handleRequestLimitByDebounce(), 500)}
                 onChange={(evt) => {
                     const value = evt.currentTarget.value;
@@ -159,9 +164,10 @@ class Products extends Component {
 
     // NOTE: When too many dom and logic transfer this to separate component
     renderOrderByCtrl(){
+        const {isLoading} = this.props;
         const value = this.state.currOrderBy === "desc" ? "DESC" : "ASC";
         return <div className="product-orderby">
-            <button className="btn" onClick={this.handleProductsOrderBy} >{value}</button>
+            <button className="btn" disabled={isLoading} onClick={this.handleProductsOrderBy} >{value}</button>
         </div>
     }
 
@@ -169,7 +175,6 @@ class Products extends Component {
         return (
             <div className="spa-content">
                 <h1>Product Page</h1>
-
                 <div className="product-filters">
                     {this.renderSearchFilter()}
                     {this.renderCategoryFilter()}
@@ -187,11 +192,15 @@ class Products extends Component {
 }
 
 
+const mapStateToProps = (state) => ({
+    isLoading: state.products.isLoading,
+});
 const mapDispatchToProps = {
     setProduct,
+    setProductIsLoading,
 };
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
 )(Products);
