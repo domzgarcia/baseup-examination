@@ -17,6 +17,9 @@ const mergeDeep = (target, source) => {
     }
     return output;
 };
+const isObject = (item) => {
+    return item && typeof item === 'object' && !Array.isArray(item);
+};
 
 export {
     mergeDeep,

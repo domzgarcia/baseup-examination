@@ -1,7 +1,10 @@
 Development Note:
 
 Todos 
-- [ ] Product Listing
+- [x] Product Listing
+- [x] Sort by Desc
+- [x] Add name, image, category
+- [ ] Add Redux implementation to Products
 - [ ] Product inner page, shows product details
 - [ ] Product sorter/filter
 - [ ] Product search
@@ -9,6 +12,15 @@ Todos
 - [ ] App review Lists
 - [ ] Add Product review
 - [ ] Edit Product review
+
+Nice to Have
+- [ ] Pagination
+- [ ] Skeleton loader for images
+- [ ] Loader UX/UI
+
+
+
+
 
 
 

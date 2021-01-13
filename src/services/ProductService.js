@@ -1,4 +1,4 @@
-import Client from '~/client/api';
+import Client from 'Client/api';
 
 export default class ProductService {
     static endpoint = '/categories';
@@ -6,11 +6,7 @@ export default class ProductService {
     static getCategories() {
         return Client.setUrl(this.endpoint)
         .get()
-        .then( res => {
-            console.log(res);
-        })
-        .catch( e => {
-            throw e;
-        })
+        .then(res => res)
+        .catch(e => { throw e }) 
     }
 }

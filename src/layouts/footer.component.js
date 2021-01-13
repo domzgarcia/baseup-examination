@@ -9,7 +9,8 @@ class Footer extends Component {
         return(
             <footer>
                 <div className="cbs-container">
-                    <div className="footnote">ReactJS Application created with ❤️</div> 
+                    <div className="footnote">ReactJS Application created with
+                    <span role="img" aria-label="heart">❤️</span></div> 
                 </div>
             </footer>
         )

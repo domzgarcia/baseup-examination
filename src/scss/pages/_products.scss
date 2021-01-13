@@ -1,0 +1,71 @@
+.products {
+    small {
+        font-size: 10px;
+        color: $baseUpBlue;
+        display: block;
+    }
+    .product-listing {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 1em;
+        &::after {
+            content: "";
+            flex: auto;
+        }
+    }
+    .product {
+        border: 1px solid rgb(209, 209, 209);
+        width: 200px;
+        margin-bottom: 20px;
+        flex: 1;
+        border-radius: 5px;
+    }
+    .img-wrapper {
+        padding: 5px;
+        min-height: 170px;
+        .imgsrc {
+            background-color: #ccc;
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            border: 1px dashed #d1d1d1;
+        }
+    }
+    .line-divider {
+        display: block;
+        height: 2px;
+        background-color: #d1d1d1;
+        width: 100%;
+    }
+    .product-listing li:last-child{
+        margin-left: 25px;
+    }
+    .description {
+        padding: 15px;
+    }
+    .name, .category {
+        .elipsis {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .-hyperlink {
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.cbs-badge {
+    background-color: $baseUpLightBlue;
+    font-size: 10px;
+    padding: 3px 5px;
+    border-radius: 5px;
+    display: inline-block;
+    color: white;
+    margin-top: 5px;
+    box-shadow: 1px 1px 2px #ccc;
+}
+

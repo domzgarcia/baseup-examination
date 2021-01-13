@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { mergeDeep } from '~/utilities/helpersFunc';
+import { mergeDeep } from 'Utilities/helpersFunc';
 
 export default class Http {
     constructor(ctx = null) {
