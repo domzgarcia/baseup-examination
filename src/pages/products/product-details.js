@@ -11,7 +11,11 @@ class ProductDetails extends Component {
     
     render(){
         return (
-            <h1>Product Details</h1>
+            <div className="spa-content">
+                <div className="product-details">
+                    <h1>Hello World</h1>
+                </div>
+            </div>
         )
     }
 }

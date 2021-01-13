@@ -58,6 +58,31 @@
         }
     }
 }
+.product-filters {
+    margin: 20px 0;
+
+    .product-category-filter,
+    .product-search-filter {
+        display: inline-block;
+        padding: 5px;
+
+        // TODO: Make form style 
+        input, select {
+            max-width: 100%;
+            width: 100%;
+            padding: 10px 15px;
+        }
+    }
+    .product-category-filter {
+        min-width: 120px;
+    }
+    .product-search-filter {
+        max-width: 320px;
+        width: 100%;
+    }
+}
+
+
 .cbs-badge {
     background-color: $baseUpLightBlue;
     font-size: 10px;

@@ -4,9 +4,10 @@ Todos
 - [x] Product Listing
 - [x] Sort by Desc
 - [x] Add name, image, category
-- [x] Add Redux implementation to Products 
+- [x] Product filter
+- [x] Product Sorter
+- [x] Add Redux implementation to Products
 - [ ] Product inner page, shows product details
-- [ ] Product sorter/filter
 - [ ] Product search
 - [ ] App review From
 - [ ] App review Lists
