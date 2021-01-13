@@ -7,7 +7,11 @@ class Footer extends Component {
 
     render(){
         return(
-            <h1>Footer</h1>
+            <footer>
+                <div className="cbs-container">
+                    <div className="footnote">ReactJS Application created with ❤️</div> 
+                </div>
+            </footer>
         )
     }
 }

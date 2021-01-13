@@ -10,25 +10,15 @@ class Header extends Component {
     render(){
         return(
             <div className="app-header">
-                <ul>
-                    <li><Link to="/" >Home</Link></li>
-                    <li><Link to="/about" >About</Link></li>
-                    <li><Link to="/contact-us" >Contac Us</Link></li>
-                    
-                    <li><Link to="/docs" >Docs</Link></li>
-                </ul>
-                <h1>Header</h1>
-                <span className="redux-counter">{this.props.counter}</span>
+                <div className="cbs-container">
+                    <ul className="site-navigation">
+                        <li><Link to="/" >Home</Link></li>
+                        <li><Link to="/products" >Products</Link></li>
+                    </ul>
+                </div>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({
-    counter: state.common.counter,
-});
-
-export default connect(
-    mapStateToProps, 
-    null
-)(Header);
+export default Header;

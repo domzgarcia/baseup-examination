@@ -4,7 +4,8 @@ import asyncRoute from 'Utilities/asyncRoute';
 
 const HeaderComponent = asyncRoute(() => import('Layouts/header.component'));
 const FooterComponent = asyncRoute(() => import('Layouts/footer.component'));
-const Home    = asyncRoute(() => import('Pages/home'));
+const Home = asyncRoute(() => import('Pages/home'));
+const Products = asyncRoute(() => import('Pages/products'));
 
 class App extends Component {
     constructor(props){
@@ -17,6 +18,7 @@ class App extends Component {
                 <HeaderComponent />
                 <Switch>
                     <Route exact path='/' component={Home}/>
+                    <Route exact path='/products' component={Products}/>
                 </Switch>
                 <FooterComponent />
             </div>

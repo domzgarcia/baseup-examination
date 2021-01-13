@@ -6,12 +6,16 @@ $ricostacruzSiteFont: -apple-system,BlinkMacSystemFont,segoe ui,roboto,oxygen,ub
 html, body {
     background: $grayshade;
     font-family: $ricostacruzSiteFont;
-    font-size: 14px;
+    font-size: 1em;
     line-height: 1.6;
     color: $fontColorShade1;
-    overflow-x: hidden;
 }
 
 h1 {
     font-weight: 200;
+}
+
+.spa-content {
+    padding: 30px 0;
+    @extend .cbs-container;
 }
