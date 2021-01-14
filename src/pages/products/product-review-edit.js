@@ -10,13 +10,7 @@ class ProductReviewEdit extends Component {
         super(props);
 
         this.state = {
-            /*  Manual validation but not use, In my usual project I use Formik,Yup,Antd. */
-            validName: null,
-            validEmail: null,
-            validTitle: null,
-            validContent: null,
-            validRating: null,
-            // values
+            /*  I applied required but usually in my project I use Formik,Yup,Antd. */
             name: "",
             email: "",
             title: "",
