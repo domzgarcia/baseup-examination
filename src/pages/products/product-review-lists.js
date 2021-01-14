@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {resolveRatingFmt} from './helperFunc';
-import { setReviewScene, setSingleProductReview} from 'Actions/products.actions';
+import { setReviewScene, setSingleProductReview, setProductReviews} from 'Actions/products.actions';
 
 
 class ProductReviewLists extends Component {
     constructor(props){
         super(props);
         this.handleEditReview = this.handleEditReview.bind(this);
+        this.handleLikeCount = this.handleLikeCount.bind(this);
     }
     
     componentDidMount(){
@@ -19,6 +20,17 @@ class ProductReviewLists extends Component {
         this.props.setSingleProductReview(review);
         // TODO: Change scene
         this.props.setReviewScene('edit');
+    }
+
+    handleLikeCount(review){
+        const mutated = this.props.reviews.map( rv => {
+            if( +rv.id === +review.id){
+                const rvm = Object.assign({}, review);
+                rv.likes = +rvm.likes + 1;
+            }
+            return rv;
+        });
+        this.props.setProductReviews(mutated);
     }
 
     renderReviews(){
@@ -46,7 +58,9 @@ class ProductReviewLists extends Component {
                                 <span>⭐</span>
                                 {rate}
                             </span>
-                            <span>
+                            <span onClick={() => {
+                                this.handleLikeCount(review);
+                            }}>
                                 <span className="like-btn">Like</span> {review.likes}
                             </span>
                         </div>
@@ -71,7 +85,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     setReviewScene,
-    setSingleProductReview
+    setSingleProductReview,
+    setProductReviews
 };
 
 export default connect(
