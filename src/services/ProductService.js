@@ -44,4 +44,11 @@ export default class ProductService {
         .then(res => res)
         .catch(e => { throw e }) 
     }
+
+    static updateProductReview(categoryId, productId, reviewId, review) {
+        return Client.setUrl(`${this.endpoint}/${categoryId}/products/${productId}/reviews/${reviewId}`)
+        .put(review)
+        .then(res => res)
+        .catch(e => { throw e })
+    }
 }

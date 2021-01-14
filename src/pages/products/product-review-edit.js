@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ProductService from 'Services/ProductService';
 import {resolveRatingFmt} from './helperFunc';
 
-import {setReviewScene, setReviewsIsLoading} from 'Actions/products.actions';
+import {setReviewScene, setProductReviews, setReviewsIsLoading} from 'Actions/products.actions';
 
 class ProductReviewEdit extends Component {
     constructor(props){
@@ -34,40 +34,37 @@ class ProductReviewEdit extends Component {
         this.handleClickBackToReviewLists = this.handleClickBackToReviewLists.bind(this);
     }
 
+    componentDidMount(){
+        const { name, email, title, content, rating, } = this.props.review;
+        this.setState({ name, email, title, content, rating: +resolveRatingFmt(rating), });
+    }
+
     handleClickBackToReviewLists(){
         this.props.setReviewScene('view');
     }
     
     handleSubmit(){
         const {categoryId, productId} = this.props.currCategoryIdProductId;
+        const {id} = this.props.review;
         const {name, email, content, title, rating} = this.state; 
 
         ( async () => {
             this.props.setReviewsIsLoading();
 
-            /* TODO: submit new review
-            const createReview = await ProductService.createProductReview(categoryId, productId, {
+            // TODO: submit updated review,
+            // NOTE: This is not tested.
+            const updateReview = await ProductService.updateProductReview(categoryId, productId, id /* reviewId */, {
                 name, email, content, title, rating 
             });
+
             // TODO: Update reviews
             const updatedReviews = await ProductService.getProductReviews(categoryId, productId);
-            
-            // this.props.setProductReviews(updatedReviews);
-            */
-
-            return;
+            this.props.setProductReviews(updatedReviews);
 
             // TODO: Change to Listing again
             this.props.setReviewScene('view');
             this.props.setReviewsIsLoading();
         })()
-    }
-
-    componentDidMount(){
-        // ...
-        console.log('REVIEW REVIEW', this.props.review);
-        const { name, email, title, content, rating, } = this.props.review;
-        this.setState({ name, email, title, content, rating: +resolveRatingFmt(rating), });
     }
 
     handleChangeFullName(evt){
@@ -163,6 +160,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     setReviewScene,
     setReviewsIsLoading,
+    setProductReviews,
 };
 
 export default connect(
