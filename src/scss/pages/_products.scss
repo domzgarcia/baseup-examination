@@ -29,13 +29,13 @@
             max-width: 100%;
             width: 100%;
             height: auto;
-            border: 1px dashed #d1d1d1;
+            border: 1px dashed $grayshade2;
         }
     }
     .line-divider {
         display: block;
         height: 2px;
-        background-color: #d1d1d1;
+        background-color: $grayshade2;
         width: 100%;
     }
     .product-listing li:last-child{

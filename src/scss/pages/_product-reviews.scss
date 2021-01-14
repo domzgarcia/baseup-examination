@@ -1,0 +1,69 @@
+.product-reviews {
+    padding: 15px;
+    .header {
+        position: relative;
+    }
+    .action {
+        position: absolute;
+        top: 0;
+        right: 0;
+        .btn-add {
+            display: inline-block;
+            cursor: pointer;
+            color: white;
+            background-color: $limegreen;
+            padding: 2px 15px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px #ccc;
+        }
+    }
+}
+.product-review-lists {
+    // border: 1px solid $grayshade2;
+}
+.user-review {
+    display: flex;
+    padding: 5px;
+    border: 1px solid $grayshade2;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    .avatar-wrapper {
+        height:70px;
+        width: 100px;
+        background-color: #ccc;
+    }
+    .details {
+        .name {
+            font-size: 14px;
+        }
+        padding: 0 15px;
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .content {
+            font-size: 13px;
+        }
+    }
+    .actions {
+        > span {
+            margin: 5px;
+            font-size: 15px;
+            display: inline-block;
+        }
+        .like-btn {
+            display: inline-block;
+            cursor: pointer;
+            color: white;
+            background-color: $baseUpBlue;
+            padding: 2px 15px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 3px;
+            box-shadow: 0 2px 5px #ccc;
+        }
+    }
+}

@@ -1,4 +1,9 @@
-import {SET_PRODUCT, IS_PRODUCT_LOADING, SET_CATEGORY_ID_PRODUCT_ID, SET_PRODUCT_REVIEWS} from 'ActionTypes/products.actionTypes';
+import {SET_PRODUCT, 
+    IS_PRODUCT_LOADING, 
+    SET_CATEGORY_ID_PRODUCT_ID, 
+    SET_PRODUCT_REVIEWS,
+    SET_REVIEW_SCENE,
+} from 'ActionTypes/products.actionTypes';
 
 export const setProduct = (product) => {
     return {
@@ -30,6 +35,15 @@ export const setProductReviews = (reviews) => {
         type: SET_PRODUCT_REVIEWS,
         payload: {
             reviews
+        }
+    }
+}
+
+export const setReviewScene = (reviewScene) => {
+    return {
+        type: SET_REVIEW_SCENE,
+        payload: {
+            reviewScene,
         }
     }
 }

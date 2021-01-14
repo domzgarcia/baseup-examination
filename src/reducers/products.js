@@ -1,5 +1,9 @@
 import {SET_PRODUCT} from 'ActionTypes/products.actionTypes';
-import { IS_PRODUCT_LOADING, SET_CATEGORY_ID_PRODUCT_ID, SET_PRODUCT_REVIEWS } from '../actionTypes/products.actionTypes';
+import { IS_PRODUCT_LOADING, 
+    SET_CATEGORY_ID_PRODUCT_ID, 
+    SET_PRODUCT_REVIEWS,
+    SET_REVIEW_SCENE
+} from '../actionTypes/products.actionTypes';
 
 const productsInitialState = {
     product: {},
@@ -8,7 +12,9 @@ const productsInitialState = {
     currCategoryIdProductId: {
         categoryId: null,
         productId: null,
-    }
+    },
+    reviewScene: 'view', // view | edit | add
+    review: {},
 };
 
 const products = (state=productsInitialState, {type, payload}) => {
@@ -36,6 +42,11 @@ const products = (state=productsInitialState, {type, payload}) => {
                 categoryId: payload.categoryId,
                 productId: payload.productId,
             }
+        }
+        case SET_REVIEW_SCENE:
+        return {
+            ...state,
+            reviewScene: payload.reviewScene,
         }
         default:
         return state;

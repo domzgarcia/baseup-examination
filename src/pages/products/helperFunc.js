@@ -52,4 +52,5 @@ const flattenProductReviewRatings = (reviews) => {
 export {
     extractCategoriesAndProducts,
     flattenProductReviewRatings,
+    resolveRatingFmt
 }
