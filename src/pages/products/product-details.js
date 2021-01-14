@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {flattenProductReviewRatings} from './helperFunc';
+import RatingsBreakdown from 'Common/components/overall-ratings';
+
 require("date-format-lite");
 
 class ProductDetails extends Component {
@@ -47,6 +49,10 @@ class ProductDetails extends Component {
                 <div className="ratings-wrapper">
                     <h1><span>⭐</span>&nbsp;Overall Ratings</h1>
                     {(this.props.reviews && this.props.reviews.length && flattenProductReviewRatings(this.props.reviews) || 0)}
+
+                    <div className="ratings-breakdown">
+                        <RatingsBreakdown />
+                    </div>
                 </div>
 
             </div>

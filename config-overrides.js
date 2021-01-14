@@ -10,6 +10,7 @@ module.exports = function override(config, env) {
     config.resolve.alias['Actions'] = path.join(__dirname, 'src', 'actions');
     config.resolve.alias['Store'] = path.join(__dirname, 'src', 'store');
     config.resolve.alias['ActionTypes'] = path.join(__dirname, 'src', 'actionTypes');
+    config.resolve.alias['Common'] = path.join(__dirname, 'src', 'common');
     config.resolve.alias['Images'] = path.join(__dirname, 'public', 'images');
     return config;
 }
