@@ -11,6 +11,7 @@ Todos
 - [x] Add Redux implementation to Products
 - [x] Product inner page, shows product details
 - [x] Product Detail component
+- [x] Product Review Ratings computation
 - [x] Product Review component
 - [ ] Product review From
 - [ ] Product review Lists

@@ -1,11 +1,25 @@
 import React, {Component} from 'react';
 import ProductDetails from 'Pages/products/product-details';
 import ProductReviews from 'Pages/products/product-reviews';
+import ProductService from 'Services/ProductService';
+import {connect} from 'react-redux';
+import {setProduct, setProductReviews} from 'Actions/products.actions';
 
 class ProductInnerPage extends Component {
     constructor(props){
         super(props);
     }
+
+    async componentDidMount(){
+        const {productId, categoryId} = this.props.currCategoryIdProductId;
+        const product = await ProductService.getProductDetailsAndReviews(categoryId, productId);
+        console.log('inner-page', product);
+        // set product
+        this.props.setProduct(product);
+        // set review
+        this.props.setProductReviews(product.reviews);
+    }
+
     render(){
         return (
             <div className="spa-content">
@@ -25,4 +39,15 @@ class ProductInnerPage extends Component {
     }
 }
 
-export default ProductInnerPage;
+const mapStateToProps = (state) => ({
+    currCategoryIdProductId: state.products.currCategoryIdProductId,
+});
+const mapDispatchToProps = {
+    setProduct,
+    setProductReviews
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(ProductInnerPage);

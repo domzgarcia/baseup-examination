@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {flattenProductReviewRatings} from './helperFunc';
 require("date-format-lite");
 
 class ProductDetails extends Component {
@@ -12,8 +13,13 @@ class ProductDetails extends Component {
     }
     
     render(){
-        const {name, image, category, currency, price, details, createdAt, /**ratings */} = this.props.product;
+        const {name, image, createdAt, price, currency, details} = this.props.product;
+        const resolveCategory = this.props.product && 
+            this.props.product.category && 
+            this.props.product.category.name || "";
+
         const resolveDate = new Date(createdAt).date('MMM-DD-YYYY');
+
         return (
             <div className="product-details">
                 <h1 className="headline">Product Details</h1>
@@ -30,7 +36,7 @@ class ProductDetails extends Component {
 
                 <div className="cbs-cols">
                     <div className="cbs-col-50">
-                        <div className="cbs-badge">{category}</div>
+                        <div className="cbs-badge">{resolveCategory}</div>
                     </div>
                     <div className="cbs-col-50">
                         <p className="price">{`${currency} ${price}`}</p>
@@ -39,7 +45,8 @@ class ProductDetails extends Component {
                 </div>
                 
                 <div className="ratings-wrapper">
-                    <h1>TODO: Overall Ratings, Average from the Reviews</h1>
+                    <h1><span>⭐</span>&nbsp;Overall Ratings</h1>
+                    {(this.props.reviews && this.props.reviews.length && flattenProductReviewRatings(this.props.reviews) || 0)}
                 </div>
 
             </div>
@@ -49,6 +56,7 @@ class ProductDetails extends Component {
 
 const mapStateToProps = (state) => ({
     product: state.products.product,
+    reviews: state.products.reviews,
 });
 
 export default connect(

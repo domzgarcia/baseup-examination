@@ -23,4 +23,18 @@ export default class ProductService {
         .then(res => res)
         .catch(e => { throw e }) 
     }
+
+    static getProductDetailsAndReviews(categoryId, productId) {
+        return Client.setUrl(`${this.endpoint}/${categoryId}/products/${productId}`)
+        .get()
+        .then(res => res)
+        .catch(e => { throw e }) 
+    }
+
+    static getProductReviews(categoryId, productId) {
+        return Client.setUrl(`${this.endpoint}/${categoryId}/products/${productId}/reviews`)
+        .get()
+        .then(res => res)
+        .catch(e => { throw e }) 
+    }
 }

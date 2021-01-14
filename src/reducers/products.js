@@ -1,9 +1,14 @@
 import {SET_PRODUCT} from 'ActionTypes/products.actionTypes';
-import { IS_PRODUCT_LOADING } from '../actionTypes/products.actionTypes';
+import { IS_PRODUCT_LOADING, SET_CATEGORY_ID_PRODUCT_ID, SET_PRODUCT_REVIEWS } from '../actionTypes/products.actionTypes';
 
 const productsInitialState = {
     product: {},
+    reviews: [],
     isLoading: false,
+    currCategoryIdProductId: {
+        categoryId: null,
+        productId: null,
+    }
 };
 
 const products = (state=productsInitialState, {type, payload}) => {
@@ -17,6 +22,20 @@ const products = (state=productsInitialState, {type, payload}) => {
         return {
             ...state,
             product: payload.product,
+        }
+        case SET_PRODUCT_REVIEWS:
+        return {
+            ...state,
+            reviews: payload.reviews,
+        }
+        case SET_CATEGORY_ID_PRODUCT_ID:
+        return {
+            ...state,
+            currCategoryIdProductId: {
+                ...state.currCategoryIdProductId,
+                categoryId: payload.categoryId,
+                productId: payload.productId,
+            }
         }
         default:
         return state;

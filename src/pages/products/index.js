@@ -3,7 +3,7 @@ import ProductService from 'Services/ProductService';
 import {extractCategoriesAndProducts} from './helperFunc';
 import {debounce} from 'Utilities/helpersFunc';
 import {connect} from 'react-redux';
-import {setProduct, setProductIsLoading} from 'Actions/products.actions';
+import {setCategoryIdProductId, setProductIsLoading} from 'Actions/products.actions';
 import {history} from 'Store';
 
 class Products extends Component {
@@ -72,7 +72,8 @@ class Products extends Component {
     }
 
     handleProductDetails(product) {
-        this.props.setProduct(product);
+        const {categoryId, id} = product;
+        this.props.setCategoryIdProductId(categoryId, id);
         history.push(`/products/${product.id}`);
     }
 
@@ -196,7 +197,7 @@ const mapStateToProps = (state) => ({
     isLoading: state.products.isLoading,
 });
 const mapDispatchToProps = {
-    setProduct,
+    setCategoryIdProductId,
     setProductIsLoading,
 };
 
