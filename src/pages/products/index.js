@@ -33,9 +33,8 @@ class Products extends Component {
     async componentDidMount(){
         this.props.setProductIsLoading();
         const apiCategories = await ProductService.getCategories();
-        console.log('apiCategories', apiCategories);
+        // console.log('apiCategories', apiCategories);
         const {products, categories} = extractCategoriesAndProducts(apiCategories, true);
-        console.log('products', products);
         this.props.setProductIsLoading();
         this.setState({ 
             products, 

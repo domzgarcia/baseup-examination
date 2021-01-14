@@ -3,7 +3,7 @@ import ProductDetails from 'Pages/products/product-details';
 import ProductReviews from 'Pages/products/product-reviews';
 import ProductService from 'Services/ProductService';
 import {connect} from 'react-redux';
-import {setProduct, setProductReviews} from 'Actions/products.actions';
+import {setProduct, setProductReviews, setReviewScene} from 'Actions/products.actions';
 
 class ProductInnerPage extends Component {
     constructor(props){
@@ -13,11 +13,12 @@ class ProductInnerPage extends Component {
     async componentDidMount(){
         const {productId, categoryId} = this.props.currCategoryIdProductId;
         const product = await ProductService.getProductDetailsAndReviews(categoryId, productId);
-        console.log('inner-page', product);
         // set product
         this.props.setProduct(product);
         // set review
         this.props.setProductReviews(product.reviews);
+        // reset
+        this.props.setReviewScene('view');
     }
 
     render(){
@@ -31,7 +32,7 @@ class ProductInnerPage extends Component {
                         <div className="cbs-col-50">
                             <ProductReviews />
                         </div>
-                        <div className="clearfix"></div>
+                        <div className="cbs-clearfix"></div>
                     </div>
                 </div>
             </div>
@@ -44,7 +45,8 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
     setProduct,
-    setProductReviews
+    setProductReviews,
+    setReviewScene
 };
 
 export default connect(

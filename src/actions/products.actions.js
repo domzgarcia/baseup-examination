@@ -3,6 +3,7 @@ import {SET_PRODUCT,
     SET_CATEGORY_ID_PRODUCT_ID, 
     SET_PRODUCT_REVIEWS,
     SET_REVIEW_SCENE,
+    IS_REVIEWS_LOADING
 } from 'ActionTypes/products.actionTypes';
 
 export const setProduct = (product) => {
@@ -17,6 +18,12 @@ export const setProduct = (product) => {
 export const setProductIsLoading = () => {
     return {
         type: IS_PRODUCT_LOADING,
+    }
+}
+
+export const setReviewsIsLoading = () => {
+    return {
+        type: IS_REVIEWS_LOADING,
     }
 }
 

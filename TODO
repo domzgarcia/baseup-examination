@@ -14,9 +14,11 @@ Todos
 - [x] Product Review Ratings computation
 - [x] Product Review component
 - [x] Product review Lists
-- [ ] Product review From
-- [ ] Add Product review
+- [x] Product review From
+- [x] Add Product review
 - [ ] Edit Product review
+- [ ] Overall Rating Breakdown Illustration
+- [ ] Like
 
 Nice to Have
 - [ ] Pagination

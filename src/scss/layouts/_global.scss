@@ -27,3 +27,16 @@ h1 {
 .headline {
     margin-bottom: 20px;
 }
+.primary-btn {
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    background-color: $limegreen;
+    padding: 10px 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px #ccc;
+    border: 0;
+    outline: 0;
+}

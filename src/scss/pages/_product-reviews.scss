@@ -8,18 +8,15 @@
         top: 0;
         right: 0;
         .btn-add {
-            display: inline-block;
-            cursor: pointer;
-            color: white;
-            background-color: $limegreen;
-            padding: 2px 15px;
-            margin-left: 10px;
-            margin-right: 10px;
-            border-radius: 3px;
-            box-shadow: 0 2px 5px #ccc;
+            @extend .primary-btn;
+            padding-top: 2px;
+            padding-bottom: 2px;
         }
     }
 }
+/*  |---------------------
+    |   View Review
+    |---------------------*/
 .product-review-lists {
     // border: 1px solid $grayshade2;
 }
@@ -67,3 +64,43 @@
         }
     }
 }
+/*  |---------------------
+    |   Add Review
+    |---------------------*/
+    .product-review-add {
+        position: relative;
+        // border: 1px solid red;
+    }
+    .review-loader-indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: (#000000), $alpha: 0.3);
+        z-index: 10;
+        &::after {
+            content: "Loading...";
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            transform: translateXY(-60%,-60%);
+            font-size: 25px;
+            line-height: 25px;
+            color: white;
+        }
+    }    
+
+    .back-btn {
+        font-size: 15px;
+        color: $baseUpBlue; 
+        cursor: pointer;
+        margin-right: 15px;
+    }
+
+
+
+
+/*  |---------------------
+    |   Edit Review
+    |---------------------*/

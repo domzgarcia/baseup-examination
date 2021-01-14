@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ProductReviewLists from 'Pages/products/product-review-lists';
 import {setReviewScene} from 'Actions/products.actions';
+import ProductReviewAdd from 'Pages/products/product-review-add';
 
 class ProductReviews extends Component {
     constructor(props){
@@ -25,7 +26,7 @@ class ProductReviews extends Component {
             case 'edit':
             return <div>Edit</div>
             case 'add':
-            return <div>Add</div>
+            return <ProductReviewAdd />
         }
     }
     render(){
@@ -34,7 +35,9 @@ class ProductReviews extends Component {
                 <div className="header">
                     <h1 className="headline">Product Reviews</h1>   
                     <div className="action">
-                        <div className="btn-add" onClick={this.handleAddReview}>Add Review</div>
+                    {this.props.reviewScene === 'view'
+                    ? <div className="btn-add" onClick={this.handleAddReview}>Add Review</div>
+                    : <span></span>}
                     </div>
                 </div>
                 <div className="scenes">

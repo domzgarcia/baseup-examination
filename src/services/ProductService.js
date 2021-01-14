@@ -37,4 +37,11 @@ export default class ProductService {
         .then(res => res)
         .catch(e => { throw e }) 
     }
+
+    static createProductReview(categoryId, productId, review) {
+        return Client.setUrl(`${this.endpoint}/${categoryId}/products/${productId}/reviews`)
+        .post(review)
+        .then(res => res)
+        .catch(e => { throw e }) 
+    }
 }
