@@ -41,6 +41,7 @@ class ProductReviewLists extends Component {
                             <div className="content">{review.content}</div>
                         </div>
                         <div className="actions">
+                            {review.verified && <span className="v-green">Verified</span> || <span className="v-red">Unverified</span>}
                             <span>Ratings:
                                 <span>⭐</span>
                                 {rate}
