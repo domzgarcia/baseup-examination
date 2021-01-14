@@ -1,3 +1,40 @@
+.products-inner-page {
+    min-height: 600px;
+}
+
 .product-details {
     padding: 15px;
+    .img-wrapper {
+        max-width: 320px;
+        width: 100%;
+        height: 230px;
+        margin: 0 auto 30px;
+        background-color: #ccc;
+
+        img {
+            max-width: 100%;
+            width: 100;
+            height: auto;
+            
+        }
+    }
+    .name {
+        color: $baseUpBlue;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .date {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    .name,
+    .details {
+        margin-bottom: 15px;
+    }
+    .price {
+        color: $coral;
+        font-weight: 600;
+        font-size: 18px;
+        text-align: right;
+    }
 }

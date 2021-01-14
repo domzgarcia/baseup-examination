@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
+    "date-format-lite": "^17.7.0",
     "lodash": "^4.17.10",
     "node-sass": "^4.14.1",
     "prop-types": "^15.6.2",

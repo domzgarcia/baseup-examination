@@ -9,10 +9,11 @@ Todos
 - [x] Product Sort by category
 - [x] Product Sort by orderBy
 - [x] Add Redux implementation to Products
-- [ ] Product inner page, shows product details
-- [ ] Product search
-- [ ] App review From
-- [ ] App review Lists
+- [x] Product inner page, shows product details
+- [x] Product Detail component
+- [x] Product Review component
+- [ ] Product review From
+- [ ] Product review Lists
 - [ ] Add Product review
 - [ ] Edit Product review
 

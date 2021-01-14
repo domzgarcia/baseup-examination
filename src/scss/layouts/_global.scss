@@ -4,6 +4,7 @@ $fontColorShade1: #345;
 $ricostacruzSiteFont: -apple-system,BlinkMacSystemFont,segoe ui,roboto,oxygen,ubuntu,cantarell,fira sans,droid sans,helvetica neue,sans-serif;
 $baseUpBlue: #2597df;
 $baseUpLightBlue: #38ddf5;
+$coral: #FF7F50;
 
 html, body {
     background: $grayshade;
@@ -20,4 +21,7 @@ h1 {
 .spa-content {
     padding: 30px 0;
     @extend .cbs-container;
+}
+.headline {
+    margin-bottom: 20px;
 }

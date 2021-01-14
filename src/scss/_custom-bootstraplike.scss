@@ -7,3 +7,19 @@
     content: '';
     clear: both;
 }
+.cbs-cols {
+    max-width: 100%;
+    width: 100%;
+
+    .cbs-col-50 {
+        float: left;
+        max-width: 100%;
+        width: 50%;
+        padding: 20px;
+        // border: 1px dotted red;
+    }
+}
+
+.dd {
+    margin-top: 100px;
+}
