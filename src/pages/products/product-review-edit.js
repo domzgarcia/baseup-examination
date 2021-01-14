@@ -46,7 +46,6 @@ class ProductReviewEdit extends Component {
             this.props.setReviewsIsLoading();
 
             // TODO: submit updated review,
-            // NOTE: This is not tested.
             const updateReview = await ProductService.updateProductReview(categoryId, productId, id /* reviewId */, {
                 name, email, content, title, rating 
             });
