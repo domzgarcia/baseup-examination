@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import ProductReviewLists from 'Pages/products/product-review-lists';
 import {setReviewScene} from 'Actions/products.actions';
 import ProductReviewAdd from 'Pages/products/product-review-add';
+import ProductReviewEdit from 'Pages/products/product-review-edit';
 
 class ProductReviews extends Component {
     constructor(props){
@@ -24,9 +25,9 @@ class ProductReviews extends Component {
             case 'view':
             return <ProductReviewLists />;
             case 'edit':
-            return <div>Edit</div>
+            return <ProductReviewEdit />;
             case 'add':
-            return <ProductReviewAdd />
+            return <ProductReviewAdd />;
         }
     }
     render(){

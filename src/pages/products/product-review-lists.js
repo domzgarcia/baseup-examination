@@ -1,14 +1,24 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {resolveRatingFmt} from './helperFunc';
+import { setReviewScene, setSingleProductReview} from 'Actions/products.actions';
+
 
 class ProductReviewLists extends Component {
     constructor(props){
         super(props);
+        this.handleEditReview = this.handleEditReview.bind(this);
     }
     
     componentDidMount(){
         // ...
+    }
+
+    handleEditReview(review){
+        // TODO: Set Data for Edit
+        this.props.setSingleProductReview(review);
+        // TODO: Change scene
+        this.props.setReviewScene('edit');
     }
 
     renderReviews(){
@@ -21,6 +31,10 @@ class ProductReviewLists extends Component {
                         <img src={review.avatar}/>
                     </div>
                     <div className="details">
+                        <div className="btn-edit" onClick={() => {
+                            this.handleEditReview(review);
+                        }}>EDIT</div>
+
                         <div className="author">
                             <div className="name">{`${review.name} (${review.email})`}</div>
                             <div className="title">{review.title}</div>
@@ -55,7 +69,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-    // setCategoryIdProductId,
+    setReviewScene,
+    setSingleProductReview
 };
 
 export default connect(

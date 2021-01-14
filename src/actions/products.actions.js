@@ -3,7 +3,8 @@ import {SET_PRODUCT,
     SET_CATEGORY_ID_PRODUCT_ID, 
     SET_PRODUCT_REVIEWS,
     SET_REVIEW_SCENE,
-    IS_REVIEWS_LOADING
+    IS_REVIEWS_LOADING,
+    SET_SINGLE_PRODUCT_REVIEW
 } from 'ActionTypes/products.actionTypes';
 
 export const setProduct = (product) => {
@@ -51,6 +52,15 @@ export const setReviewScene = (reviewScene) => {
         type: SET_REVIEW_SCENE,
         payload: {
             reviewScene,
+        }
+    }
+}
+
+export const setSingleProductReview = (review) => {
+    return {
+        type: SET_SINGLE_PRODUCT_REVIEW,
+        payload: {
+            review
         }
     }
 }

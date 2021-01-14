@@ -1,9 +1,11 @@
-import {SET_PRODUCT} from 'ActionTypes/products.actionTypes';
-import { IS_PRODUCT_LOADING, 
+import { 
+    SET_PRODUCT,
+    IS_PRODUCT_LOADING, 
     SET_CATEGORY_ID_PRODUCT_ID, 
     SET_PRODUCT_REVIEWS,
     SET_REVIEW_SCENE,
-    IS_REVIEWS_LOADING
+    IS_REVIEWS_LOADING,
+    SET_SINGLE_PRODUCT_REVIEW
 } from '../actionTypes/products.actionTypes';
 
 const productsInitialState = {
@@ -54,6 +56,11 @@ const products = (state=productsInitialState, {type, payload}) => {
         return {
             ...state,
             reviewScene: payload.reviewScene,
+        }
+        case SET_SINGLE_PRODUCT_REVIEW:
+        return {
+            ...state,
+            review: payload.review,
         }
         default:
         return state;
