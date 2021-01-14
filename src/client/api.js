@@ -2,7 +2,6 @@ import Http from './http';
 
 export default class ApiClient {
     static url = '';
-    // static API_BASE = `${process.env.NEXT_PUBLIC_BYOB_HOST}/api/v1`;
     static API_BASE = "https://5ffbed0e63ea2f0017bdb67d.mockapi.io";
 
     static setUrl(url) {
