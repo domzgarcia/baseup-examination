@@ -64,6 +64,10 @@
             margin-right: 10px;
             border-radius: 3px;
             box-shadow: 0 2px 5px #ccc;
+
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
         }
     }
 }
